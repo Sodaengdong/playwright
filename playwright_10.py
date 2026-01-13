@@ -10,7 +10,8 @@ with sync_playwright() as p :
     page.goto("https://the-internet.herokuapp.com/dynamic_loading/2")
     
     page.get_by_role("button", name = "Start").click()
-    page.wait_for_selector("text = Hello World!")
+    #page.wait_for_selector("text = Hello World!")
+    expect(page.get_by_text("Hello World!")).to_be_visible()
     
     print(page.inner_text("#finish")) #finish 요소의 텍스트를 즉시 읽어서 출력
     
